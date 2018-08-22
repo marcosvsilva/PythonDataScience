@@ -53,7 +53,7 @@ type = directoryArchive[len(directoryArchive) - 4:]
 
 if validTypeOfArchive(type):
     data = open(directoryArchive, 'r').read()
-    with open(directoryExit, 'w', ) as archiveWriter:
+    with open(directoryExit, 'w') as archiveWriter:
         archiveWriter.write(json.dumps(converTextToDictonary(data)))
 else:
     print("Archive invalid!")

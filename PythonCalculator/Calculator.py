@@ -16,13 +16,13 @@ def inputExpression():
     return str(input("Expression: "))
 
 
-def removeSpaces(string):
+def strTrim(string):
     return str(string).replace(" ", "")
 
 
-def returnOnlyNumber(listNubers):
+def returnOnlyNumber(listNumbers):
     result = []
-    for numbers in listNubers:
+    for numbers in listNumbers:
         if str(numbers).isdigit():
             result.append(float(numbers))
     return result
@@ -63,10 +63,10 @@ def calculate(allNumbersList, expressionString):
 printMenu()
 expression = inputExpression()
 while (expression.upper() != 'Exit'.upper()):
-    expression = removeSpaces(expression)
+    expression = strTrim(expression)
     allNumbersList = returnAllNumberExpression(expression)
     result = calculate(allNumbersList, expression)
-    print("Result expresson: %.2f" %result)
+    print("Result expresson: %.2f" % result)
 
     printMenu()
-    expression = imputExpression()
+    expression = inputExpression()
