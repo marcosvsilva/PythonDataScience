@@ -12,7 +12,7 @@ def printMenu():
     print("To close the calculator inset 'Exit'")
 
 
-def imputExpression():
+def inputExpression():
     return str(input("Expression: "))
 
 
@@ -61,7 +61,7 @@ def calculate(allNumbersList, expressionString):
 
 
 printMenu()
-expression = imputExpression()
+expression = inputExpression()
 while (expression.upper() != 'Exit'.upper()):
     expression = removeSpaces(expression)
     allNumbersList = returnAllNumberExpression(expression)
