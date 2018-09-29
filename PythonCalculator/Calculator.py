@@ -4,12 +4,13 @@ Create by Marcos Vinicius
 '''
 
 operationMathematics = ('+', '-', '/', '*')
+newOperationSplit = '$'
 
 
 def printMenu():
     print("---PYTHON CALCULATOR---")
     print("Insert your mathematical operations")
-    print("To close the calculator inset 'Exit'")
+    print("To close the calculator insert 'Exit'")
 
 
 def inputExpression():
@@ -20,25 +21,29 @@ def strTrim(string):
     return str(string).replace(" ", "")
 
 
-def returnOnlyNumber(listNumbers):
-    result = []
-    for numbers in listNumbers:
-        if str(numbers).isdigit():
-            result.append(float(numbers))
+def validListIsOnlyNumber(listNumber):
+    result = True
+    for element in listNumber:
+        try:
+            test = float(element)
+        except ValueError:
+            result = False
+            break
     return result
 
 
 def returnAllNumberExpression(string):
     expression = str(string)
-    listExpression = []
 
     for operation in operationMathematics:
-        if operation in expression:
-            listOnlyNumbers = returnOnlyNumber(expression.split(operation))
-            for numbers in listOnlyNumbers:
-                listExpression.append(numbers)
+        expression = expression.replace(operation, newOperationSplit)
 
-    return listExpression
+    listOnlyNumbers = expression.split(newOperationSplit)
+
+    if validListIsOnlyNumber(listOnlyNumbers):
+        return listOnlyNumbers
+    else:
+        return []
 
 
 def calculate(allNumbersList, expressionString):
@@ -48,13 +53,13 @@ def calculate(allNumbersList, expressionString):
     for characters in expressionString:
         if characters in operationMathematics:
             if characters == '+':
-                result += allNumbersList[position]
+                result += float(allNumbersList[position])
             elif characters == '-':
-                result -= allNumbersList[position]
+                result -= float(allNumbersList[position])
             elif characters == '/':
-                result /= allNumbersList[position]
+                result /= float(allNumbersList[position])
             elif characters == '*':
-                result *= allNumbersList[position]
+                result *= float(allNumbersList[position])
             position += 1
 
     return float(result)
@@ -65,8 +70,10 @@ expression = inputExpression()
 while (expression.upper() != 'Exit'.upper()):
     expression = strTrim(expression)
     allNumbersList = returnAllNumberExpression(expression)
-    result = calculate(allNumbersList, expression)
-    print("Result expresson: %.2f" % result)
+    if len(allNumbersList) > 0:
+        print("Result expresson: %.2f" % calculate(allNumbersList, expression))
+    else:
+        print("Expression Invalid!")
 
     printMenu()
     expression = inputExpression()
