@@ -1,22 +1,11 @@
+'''
+Software in python for study
+Game ping pong
+'''
+
 from tkinter import *
 import random
 import time
-
-level = int(input("Select your level... 1, 2, 3, 4 or 5 \n"))
-length = 500 / level
-
-root = Tk()
-root.title("Ping Pong")
-root.resizable(0, 0)
-root.wm_attributes("-topmost", -1)
-
-canvas = Canvas(root, width=800, height=600, bd=0, highlightthickness=0)
-canvas.pack()
-
-root.update()
-
-count = 0
-lost = False
 
 
 class Boll:
@@ -127,6 +116,22 @@ def game_over():
     canvas.itemconfig(game, text="Game over!")
 
 
+level = int(input("Select your level... 1, 2, 3, 4 or 5 \n"))
+length = 500 / level
+
+screen = Tk()
+screen.title("Game Ping Pong")
+screen.resizable(0, 0)
+screen.wm_attributes("-topmost", -1)
+
+canvas = Canvas(screen, width=800, height=600, bd=0, highlightthickness=0)
+canvas.pack()
+
+screen.update()
+
+count = 0
+lost = False
+
 bar = Bar(canvas, "red")
 boll = Boll(canvas, bar, "black")
 
@@ -135,4 +140,4 @@ game = canvas.create_text(400, 300, text=" ", fill="red", font=("Arial", 40))
 
 canvas.bind_all("<Button-1>", start_game)
 
-root.mainloop()
+screen.mainloop()
