@@ -39,3 +39,18 @@ print(list_pow_a)
 
 list_pow_b = list(map(lambda y: y ** 2, list_b))
 print(list_pow_b)
+
+red_sum = reduce(sum, list_a)
+print(red_sum)
+
+red_sub = reduce(sub, list_a)
+print(red_sub)
+
+red_mul = reduce(mul, list_a)
+print(red_mul)
+
+red_div = reduce(div, list_a)
+print(red_div)
+
+red_max = reduce(lambda x, y: max(x, y), list_a)
+print(red_max)
