@@ -54,3 +54,18 @@ print(red_div)
 
 red_max = reduce(lambda x, y: max(x, y), list_a)
 print(red_max)
+
+filter_over_10 = list(filter(lambda x: x > 10, list_a))
+print(filter_over_10)
+
+filter_over_20 = list(filter(lambda x: x > 20, list_a))
+print(filter_over_20)
+
+filter_over_30 = list(filter(lambda x: x > 30, list_a))
+print(filter_over_30)
+
+filter_over_40 = list(filter(lambda x: x > 40, list_a))
+print(filter_over_40)
+
+filter_over_50 = list(filter(lambda x: x > 50, list_a))
+print(filter_over_50)
