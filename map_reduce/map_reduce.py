@@ -22,6 +22,8 @@ list_b = [10, 20, 30, 40, 50]
 
 list_b.sort(reverse=True)
 
+# map functions
+
 list_sum = list(map(sum, list_a, list_b))
 print(list_sum)
 
@@ -40,6 +42,8 @@ print(list_pow_a)
 list_pow_b = list(map(lambda y: y ** 2, list_b))
 print(list_pow_b)
 
+# reduce functions
+
 red_sum = reduce(sum, list_a)
 print(red_sum)
 
@@ -55,6 +59,8 @@ print(red_div)
 red_max = reduce(lambda x, y: max(x, y), list_a)
 print(red_max)
 
+# filter functions
+
 filter_over_10 = list(filter(lambda x: x > 10, list_a))
 print(filter_over_10)
 
@@ -69,3 +75,23 @@ print(filter_over_40)
 
 filter_over_50 = list(filter(lambda x: x > 50, list_a))
 print(filter_over_50)
+
+# list comprehensions (more agility for map)
+
+list_a = [x for x in list_a]
+print(list_a)
+
+list_a_over_10 = [x for x in list_a if x > 10]
+print(list_a_over_10)
+
+list_a_over_20 = [x for x in list_a if x > 20]
+print(list_a_over_20)
+
+list_a_over_30 = [x for x in list_a if x > 30]
+print(list_a_over_30)
+
+list_a_over_40 = [x for x in list_a if x > 40]
+print(list_a_over_40)
+
+list_a_over_50 = [x for x in list_a if x > 50]
+print(list_a_over_50)
