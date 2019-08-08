@@ -81,3 +81,12 @@ class Gallows:
             self.mistakes.append(letter)
 
 
+words = {"Food": "chocolate", "Animal": "dog"}
+word = randint(0, len(words))
+
+game = Gallows("Food", "chocolate")
+
+while not game.get_finaly():
+    game.print_gallows()
+    letter = str(input("Insert one letter: "))
+    game.attempt(letter)
