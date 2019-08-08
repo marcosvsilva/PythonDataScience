@@ -40,3 +40,27 @@ class Gallows:
 
         print("")
 
+    def print_man(self):
+        if len(self.mistakes) == 0:
+            print(" | ")
+        else:
+            print(" |           0 ")
+
+        if len(self.mistakes) > 1:
+            if len(self.mistakes) == 2:
+                print(" |           | ")
+            elif len(self.mistakes) == 3:
+                print(" |          /| ")
+            else:
+                print(" |          /|\ ")
+        else:
+            print(" | ")
+
+        if len(self.mistakes) > 4:
+            if len(self.mistakes) == 5:
+                print(" |          / ")
+            else:
+                print(" |          / \ ")
+        else:
+            print(" | ")
+
