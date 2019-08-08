@@ -1,12 +1,20 @@
 import os
 from random import randint
 
+
 class Gallows:
     def __init__(self, hint, word):
         self.hint = hint
         self.word = word
         self.mistakes = []
         self.hits = []
+
+        word_not_repeat_letter = []
+        for letter in word:
+            if letter not in word_not_repeat_letter:
+                word_not_repeat_letter.append(letter)
+
+        self.number_of_letter_correct = len(word_not_repeat_letter)
 
         self.password = ""
         for i in range(len(word)):
@@ -64,26 +72,31 @@ class Gallows:
         else:
             print(" | ")
 
-    def get_finaly(self):
-        return len(self.mistakes) >= 6 or len(self.hits) == len(self.word)
-
     def attempt(self, letter):
-        if letter in self.word:
-            self.hits.append(letter)
+        if letter not in self.hits and letter not in self.mistakes:
+            if letter in self.word:
+                self.hits.append(letter)
 
-            self.password = ""
-            for letter in self.word:
-                if letter in self.hits:
-                    self.password += letter + " "
-                else:
-                    self.password += "_ "
+                self.password = ""
+                for letter in self.word:
+                    if letter in self.hits:
+                        self.password += letter + " "
+                    else:
+                        self.password += "_ "
+            else:
+                self.mistakes.append(letter)
+
+            self.print_gallows()
+
+    def validate_win(self):
+        if len(self.hits) == self.number_of_letter_correct:
+            print("Congratulations great master! You are the lord of the gallows game...")
+            return False
+        elif len(self.mistakes) >= 6:
+            print("Unfortunately it was not now! Try again beginner...")
+            return False
         else:
-            self.mistakes.append(letter)
-
-        self.print_gallows()
-
-        if self.get_finaly():
-            print("Finaly game!!!!!")
+            return True
 
 
 words = {"Food": "chocolate", "Animal": "dog"}
@@ -92,6 +105,6 @@ word = randint(0, len(words))
 game = Gallows("Food", "chocolate")
 game.print_gallows()
 
-while not game.get_finaly():
+while game.validate_win():
     letter = str(input("Insert one letter: "))
     game.attempt(letter)
