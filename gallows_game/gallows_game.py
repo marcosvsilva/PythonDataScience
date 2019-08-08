@@ -12,3 +12,31 @@ class Gallows:
         for i in range(len(word)):
             self.password += "_ "
 
+    def print_gallows(self):
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print("--------------------------------------------------")
+        print("")
+        print(" HINT: %s" % self.hint)
+        print("  __________  ")
+        print(" |          | ")
+
+        self.print_man()
+
+        print(" | ")
+
+        print("_|_          %s " % self.password)
+        print("")
+
+        mistake = ""
+        for letter in self.mistakes:
+            mistake += letter + " "
+
+        hit = ""
+        for letter in self.hits:
+            hit += letter + " "
+
+        print("letters incorrects: %s" % mistake)
+        print("letters corrects: %s" % hit)
+
+        print("")
+
