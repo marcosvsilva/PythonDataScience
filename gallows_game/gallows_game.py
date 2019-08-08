@@ -64,3 +64,6 @@ class Gallows:
         else:
             print(" | ")
 
+    def get_finaly(self):
+        return len(self.mistakes) > 6 or len(self.hits) == len(self.word)
+
