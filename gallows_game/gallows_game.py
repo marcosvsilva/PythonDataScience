@@ -1,5 +1,5 @@
 import os
-from random import randint
+import random
 
 
 class Gallows:
@@ -99,10 +99,20 @@ class Gallows:
             return True
 
 
-words = {"Food": "chocolate", "Animal": "dog"}
-word = randint(0, len(words))
+words = {"Comida": ["chocolate", "pizza", "strogonoff", "cochinha", "quibe", "arroz", "batata-frita", "torta", "bolo"],
+         "Animal": ["jorges", "cachorro", "macaco", "baleia", "preguica", "cobra", "leao", "elefante", "girafa", "lhama"],
+         "Bebida": ["cafe", "caipirinha", "refrigerante", "cerveja", "vinho", "whiskey", "vodka", "suco", "agua"]}
 
-game = Gallows("Food", "chocolate")
+list_random = list(words.keys())
+random.shuffle(list_random)
+
+hint = list_random[0]
+password_list = words.get(hint)
+
+random.shuffle(password_list)
+password = password_list[0]
+
+game = Gallows(hint, password)
 game.print_gallows()
 
 while game.validate_win():
