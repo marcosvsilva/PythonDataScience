@@ -95,3 +95,12 @@ print(list_a_over_40)
 
 list_a_over_50 = [x for x in list_a if x > 50]
 print(list_a_over_50)
+
+# zip functions
+
+list_a_b = list(zip(list_a, list_b))
+print(list_a_b)
+
+list_a_filter_a = list(zip(list_a, list_a_over_30))
+print(list_a_filter_a)
+
