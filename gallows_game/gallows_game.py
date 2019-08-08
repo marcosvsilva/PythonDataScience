@@ -99,22 +99,27 @@ class Gallows:
             return True
 
 
-words = {"Comida": ["chocolate", "pizza", "strogonoff", "cochinha", "quibe", "arroz", "batata-frita", "torta", "bolo"],
-         "Animal": ["jorges", "cachorro", "macaco", "baleia", "preguica", "cobra", "leao", "elefante", "girafa", "lhama"],
-         "Bebida": ["cafe", "caipirinha", "refrigerante", "cerveja", "vinho", "whiskey", "vodka", "suco", "agua"]}
+def main():
+    words = {"Comida": ["chocolate", "pizza", "strogonoff", "cochinha", "quibe", "arroz", "batata-frita", "torta", "bolo"],
+             "Animal": ["jorges", "cachorro", "macaco", "baleia", "preguica", "cobra", "leao", "elefante", "girafa", "lhama"],
+             "Bebida": ["cafe", "caipirinha", "refrigerante", "cerveja", "vinho", "whiskey", "vodka", "suco", "agua"]}
 
-list_random = list(words.keys())
-random.shuffle(list_random)
+    list_random = list(words.keys())
+    random.shuffle(list_random)
 
-hint = list_random[0]
-password_list = words.get(hint)
+    hint = list_random[0]
+    password_list = words.get(hint)
 
-random.shuffle(password_list)
-password = password_list[0]
+    random.shuffle(password_list)
+    password = password_list[0]
 
-game = Gallows(hint, password)
-game.print_gallows()
+    game = Gallows(hint, password)
+    game.print_gallows()
 
-while game.validate_win():
-    letter = str(input("Insert one letter: "))
-    game.attempt(letter)
+    while game.validate_win():
+        letter = str(input("Insert one letter: "))
+        game.attempt(letter)
+
+
+if __name__ == "__main__":
+    main()
