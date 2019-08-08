@@ -67,3 +67,17 @@ class Gallows:
     def get_finaly(self):
         return len(self.mistakes) > 6 or len(self.hits) == len(self.word)
 
+    def attempt(self, letter):
+        if letter in self.word:
+            self.hits.append(letter)
+
+            self.password = ""
+            for letter in self.word:
+                if letter in self.hits:
+                    self.password += letter + " "
+                else:
+                    self.password += "_ "
+        else:
+            self.mistakes.append(letter)
+
+
