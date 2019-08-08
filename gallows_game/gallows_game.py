@@ -44,28 +44,28 @@ class Gallows:
         if len(self.mistakes) == 0:
             print(" | ")
         else:
-            print(" |           0 ")
+            print(" |          0 ")
 
         if len(self.mistakes) > 1:
             if len(self.mistakes) == 2:
-                print(" |           | ")
+                print(" |          | ")
             elif len(self.mistakes) == 3:
-                print(" |          /| ")
+                print(" |         /| ")
             else:
-                print(" |          /|\ ")
+                print(" |         /|\ ")
         else:
             print(" | ")
 
         if len(self.mistakes) > 4:
             if len(self.mistakes) == 5:
-                print(" |          / ")
+                print(" |         / ")
             else:
-                print(" |          / \ ")
+                print(" |         / \ ")
         else:
             print(" | ")
 
     def get_finaly(self):
-        return len(self.mistakes) > 6 or len(self.hits) == len(self.word)
+        return len(self.mistakes) >= 6 or len(self.hits) == len(self.word)
 
     def attempt(self, letter):
         if letter in self.word:
@@ -80,13 +80,18 @@ class Gallows:
         else:
             self.mistakes.append(letter)
 
+        self.print_gallows()
+
+        if self.get_finaly():
+            print("Finaly game!!!!!")
+
 
 words = {"Food": "chocolate", "Animal": "dog"}
 word = randint(0, len(words))
 
 game = Gallows("Food", "chocolate")
+game.print_gallows()
 
 while not game.get_finaly():
-    game.print_gallows()
     letter = str(input("Insert one letter: "))
     game.attempt(letter)
