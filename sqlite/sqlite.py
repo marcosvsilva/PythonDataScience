@@ -33,8 +33,8 @@ sql_select = 'select * from course'
 cur.execute(sql_select)
 data = cur.fetchall()
 
-for tuple in data:
-    print("Register course - id: %d, name: %s, department: %s." % tuple)
+for line in data:
+    print("Register course - id: %d, name: %s, department: %s." % line)
 
 cur.close()
 con.close()
