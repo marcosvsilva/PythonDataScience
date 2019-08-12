@@ -36,4 +36,5 @@ data = cur.fetchall()
 for tuple in data:
     print("Register course - id: %d, name: %s, department: %s." % tuple)
 
+cur.close()
 con.close()
